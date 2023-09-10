@@ -1,0 +1,10 @@
+with tweet_count as (
+SELECT user_id, count(tweet_id) as tweets_per_user
+from tweets
+where tweet_date BETWEEN '2022-01-01' AND '2022-12-31'
+GROUP BY user_id
+)
+
+SELECT tweets_per_user, COUNT(user_id)
+from tweet_count
+GROUP BY tweets_per_user
